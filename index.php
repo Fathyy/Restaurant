@@ -2,7 +2,10 @@
 require __DIR__ . "/includes/header.php"?>
 
 <section class="container">
-    <?php require __DIR__ . "/includes/navbar.php"?>
+    
+    <?php 
+    require __DIR__ . "/config/database.php";
+    require __DIR__ . "/includes/navbar.php"?>
             <!-- introduction statement -->
     <div class="introduction wrapper">
         <div class="intro-col">
@@ -36,44 +39,45 @@ require __DIR__ . "/includes/header.php"?>
 </section>
 
 
-    <main class="foods-section">
-        <div class="wrapper">
-            <h2 class="food-heading"><span>Discover</span><br>Meals</h2>
-            <div class="row">
-            <ul class="options-list">
-                <li class="options-item" id="mealBtn">Meal</li>
-                <li class="options-item" id="dessertBtn">Dessert</li>
-                <li class="options-item" id="drinksBtn">Drinks</li>    
-                </ul>
-            </div>
-
-            <div class="display-row">
-                <div class="food-display meal-container">
-                    <img src="images/dish1.png" alt="" class="displayImgOne">
-                    <div class="view-more">
-                        <a href="menu.html#mealsId" class="menu-btn view-menu">View Menu</a>
-                    </div>
-                </div>
-    
-                <div class="food-display dessert-container">
-                    <img src="images/macarons.png" alt="" class="displayImgTwo">
-                    <div class="view-more">
-                        <a href="menu.html#dessertId" class="menu-btn view-menu">View Menu</a>
-                    </div>
-                </div>
-    
-                <div class="food-display drinks-container">
-                    <img src="images/drinks2.png" alt="" class="displayImgThree">
-                    <div class="view-more">
-                        <a href="menu.html#drinksId" class="menu-btn view-menu">View Menu</a>
-                </div>
-
-            </div>
-
-            
+<main class="foods-section">
+    <div class="wrapper">
+        <h2 class="food-heading"><span>Discover</span><br>Meals</h2>
+        <div class="row">
+        <ul class="options-list">
+            <li class="options-item" id="mealBtn">Meal</li>
+            <li class="options-item" id="dessertBtn">Dessert</li>
+            <li class="options-item" id="drinksBtn">Drinks</li>    
+            </ul>
         </div>
-    </main>
-</div>
+
+        <div class="display-row">
+            <div class="food-display meal-container">
+                <img src="images/dish1.png" alt="" class="displayImgOne">
+                <div class="view-more">
+                    <a href="menu.html#mealsId" class="menu-btn view-menu">View Menu</a>
+                </div>
+            </div>
+
+            <div class="food-display dessert-container">
+                <img src="images/macarons.png" alt="" class="displayImgTwo">
+                <div class="view-more">
+                    <a href="menu.html#dessertId" class="menu-btn view-menu">View Menu</a>
+                </div>
+            </div>
+
+            <div class="food-display drinks-container">
+                <img src="images/drinks2.png" alt="" class="displayImgThree">
+                <div class="view-more">
+                    <a href="menu.html#drinksId" class="menu-btn view-menu">View Menu</a>
+            </div>
+
+        </div>
+
+        
+    </div>
+    </div>
+</main>
+
 
 <section>
     <div class="form-container">

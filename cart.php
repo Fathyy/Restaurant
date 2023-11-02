@@ -33,26 +33,28 @@ if (isset($_POST['foodSubmit'])) {
                     if (isset($_SESSION['auth'])) :
                         $user_id = $_SESSION['auth']['id'];
                     
-                        $stmt = $mysqli->prepare("SELECT cart_id FROM cart WHERE user_id = ?");
+                        $stmt = $mysqli->prepare("SELECT COUNT(cart_id) as item_count FROM cart WHERE user_id = ?");
                         $stmt->bind_param('s', $user_id);
                         $stmt->execute();
-                        $num_rows = $stmt->num_rows;?>
+                        $result = $stmt->get_result();
+                        $row = $result->fetch_assoc();
+                        $item_count = $row['item_count'];?>
                     
-                        <h1>Cart (<?php echo $num_rows?>)</h1>
-                    <?php endif ?>
+                        <h1>Cart (<?php echo $item_count?>)</h1>
+                        <?php $stmt->close()?>
                 </div>
 
                 
                 <?php
                 // to authenticate each user and show respective cart items
-                if (isset($_SESSION['auth_user']['id'])) :
-                    $user_id = $_SESSION['auth_user']['id'];
+                
+                    $user_id = $_SESSION['auth']['id'];
                 
                     $sql = $mysqli->prepare("SELECT products.Name, products.Price,
                     products.Description, products.image, cart.product_id, cart.quantity,  
                     cart.cart_id FROM products
                     INNER JOIN cart 
-                    ON products.product_id = cart.product_id AND c.user_id ='$user_id'");
+                    ON products.product_id = cart.product_id AND cart.user_id ='$user_id'");
                     $sql->execute();
                     $result = $sql->get_result();
 
@@ -69,8 +71,7 @@ if (isset($_POST['foodSubmit'])) {
                         </div>
                         <div class="cart-price">
                             <h3 class="realPrice">
-                            <?php echo $row['Price']?>
-                            <input type="hidden" class="price" value="<?php echo $row['Price']?>">
+                            <?php echo $row['Price'] * $row['quantity']?>
                         </h3>
                         </div>
                         <div class="delete">

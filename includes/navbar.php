@@ -1,4 +1,4 @@
-<?php session_start()
+<?php session_start();
 ?>
 
 <div class="fixed-navbar">
@@ -17,6 +17,7 @@
             <nav class="navbar">
                 <ul class="nav-group">
                     <?php
+                
                     // if a user is logged in show welcome message and logout
                     if (isset($_SESSION['auth'])) :
                     $welcomeName = $_SESSION['auth']['fname'];
@@ -28,14 +29,15 @@
                         <?php
                         // get the number of items in the cart for a particular user
                         $user_id = $_SESSION['auth']['id'];
-                        $stmt = $mysqli->prepare("SELECT cart_id FROM cart WHERE user_id = ?");
+                        $stmt = $mysqli->prepare("SELECT COUNT(cart_id) as item_count FROM cart WHERE user_id = ?");
                         $stmt->bind_param('s', $user_id);
                         $stmt->execute();
-                        $num_rows = $stmt->num_rows;
+                        $result = $stmt->get_result();
+                        $row = $result->fetch_assoc();
+                        $item_count = $row['item_count'];?>
                         
-                        ?>
                         <li class="nav-item"><a href="cart.php"><i class="fa-solid fa-cart-shopping"></i>
-                    <?php echo $num_rows;?>
+                    <?php echo $item_count;?>
                     <?php $stmt->close()?>
                     </a></li>
                     
