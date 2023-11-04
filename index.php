@@ -1,5 +1,10 @@
 <?php 
+session_start();
 require __DIR__ . "/includes/header.php"?>
+
+<style>
+    <?php include "css/style.css"?>
+</style>
 
 <section class="container">
     

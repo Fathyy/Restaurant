@@ -47,7 +47,9 @@ if (isset($_POST['foodSubmit'])) {
                 
                 <?php
                 // to authenticate each user and show respective cart items
-                
+                    $total = 0; // //price for all item
+                    $unitPrice = 0; //price for one item
+
                     $user_id = $_SESSION['auth']['id'];
                 
                     $sql = $mysqli->prepare("SELECT products.Name, products.Price,
@@ -71,7 +73,9 @@ if (isset($_POST['foodSubmit'])) {
                         </div>
                         <div class="cart-price">
                             <h3 class="realPrice">
-                            <?php echo $row['Price'] * $row['quantity']?>
+                            <?php 
+                            $unitPrice = $row['Price'] * $row['quantity'];
+                            echo $unitPrice?>
                         </h3>
                         </div>
                         <div class="delete">
@@ -79,6 +83,11 @@ if (isset($_POST['foodSubmit'])) {
                             <i class="fa-regular fa-trash-can"></i></button>
                         </div>
                     </div>
+
+                    <!-- calculate total -->
+                    <?php
+                    $total = $total + $unitPrice;
+                    ?>
                 <?php endwhile?>
                 <?php endif ?>
    
@@ -92,7 +101,9 @@ if (isset($_POST['foodSubmit'])) {
                 </div>
                 <div class="sub-total flex">
                     <p class="light-gray">Subtotal</p>
-                    <p id="grandTotal">KSh 18,493</p>
+                    <p id="grandTotal"><?php if (isset($total)) {
+                        echo $total;
+                    }?></p>
                 </div>
                 <p class="light-gray">Delivery fees not included yet.</p>
                 <button class="check">CHECKOUT</button>

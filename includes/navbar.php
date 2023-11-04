@@ -1,5 +1,4 @@
-<?php session_start();
-?>
+
 
 <div class="fixed-navbar">
     <div class="wrapper">

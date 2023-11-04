@@ -435,6 +435,19 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     list-style-type: none;
     font-weight: 700;
 }
+/* Newsletter =========== */
+.signup-part{
+    background-color: var(--grey);
+    display: flex;
+    border-radius: 30px;
+}
+.signup-part input{
+    border: none;
+    background-color: transparent;
+    flex: 1;
+    padding-left: 15px;
+    font-size: 18px;
+}
 .signup{
     background: var(--secondary);
     color: white;
@@ -445,6 +458,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     outline: none;
     cursor: pointer;
     font-size: 18px;
+    border-radius: 30px;
 }
 .signup:focus, 
 .signup:hover{
@@ -545,6 +559,10 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 }
 .quantity-input{
     padding: 5px 10px;
+    border: none;
+    margin: 1rem 0;
+    background-color: var(--grey);
+    outline: none;
 }
 
 /* ==========================!!!!!Login!!!!!!!!========================== */
@@ -681,6 +699,10 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     }
     .signup-part{
         align-items: flex-start;
+        align-self: flex-start;
+    }
+    .signup-part input{
+        align-self: center;
     }
     .contact-footer{
         display: flex;

@@ -1,4 +1,8 @@
 <?php require __DIR__ . "/includes/header.php"?>
+
+<style>
+    <?php include "css/style.css"?>
+</style>
     
     <section class="sub-container contactt">
 

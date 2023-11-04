@@ -2,6 +2,9 @@
 require __DIR__ . "/includes/header.php";
 require __DIR__ . "/config/database.php"
 ?>
+<style>
+    <?php include "css/style.css"?>
+</style>
     <section class="sub-container">
      
         <?php require __DIR__ . "/includes/navbar.php"?>
